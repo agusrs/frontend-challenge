@@ -1,0 +1,127 @@
+@import "../../styles/variables";
+
+.container {
+  background: #ffffff;
+  border-radius: var(--borderRadius);
+  margin-top: var(--spacing-1);
+  padding: var(--spacing-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+
+  .details {
+    display: flex;
+    gap: var(--spacing-1);
+
+    @media screen and (max-width: 760px) {
+      display: block;
+    }
+
+    .attributes {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-1);
+
+      .condition {
+        font-size: 14px;
+      }
+
+      .mainAttributes {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-2);
+
+        @include mobile() {
+          gap: var(--spacing-1);
+        }
+
+        .itemTitle {
+          font-size: 24px;
+          font-weight: 600;
+          overflow: hidden;
+          display: -webkit-box;
+          -webkit-line-clamp: 5;
+          line-clamp: unset;
+          -webkit-box-orient: vertical;
+
+          @include tablet() {
+            font-size: 20px;
+          }
+
+          @include mobile() {
+            font-size: 18px;
+          }
+        }
+
+        .price {
+          font-size: 46px;
+
+          @include tablet() {
+            font-size: 36px;
+          }
+
+          @include mobile() {
+            font-size: 28px;
+          }
+        }
+
+        a {
+          color: #ffffff;
+          background-color: #3483fa;
+          border: none;
+          border-radius: var(--borderRadius);
+          padding: 12px;
+          font-size: 18px;
+          text-decoration: none;
+          text-align: center;
+          cursor: pointer;
+
+          &:hover {
+            background-color: #2968c8;
+          }
+
+          @include tablet() {
+            font-size: 16px;
+            width: 50%;
+          }
+        }
+      }
+    }
+
+    img {
+      max-width: 680px;
+      max-height: 680px;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2);
+    max-width: 680px;
+
+    @include mobile() {
+      gap: var(--spacing-1);
+    }
+
+    .descriptionTitle {
+      font-size: 28px;
+
+      @include mobile() {
+        font-size: 20px;
+      }
+    }
+
+    p {
+      margin: 0;
+      font-size: 1rem;
+      color: var(--lightGrey);
+
+      @include mobile() {
+        font-size: 0.8rem;
+      }
+    }
+  }
+}

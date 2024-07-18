@@ -1,0 +1,25 @@
+.noItems {
+  background-color: #fff;
+  border-radius: var(--borderRadius);
+  margin: 0 auto;
+  width: fit-content;
+  margin-top: 100px;
+  padding: var(--spacing-2);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+  text-align: center;
+
+  svg {
+    font-size: 48px;
+  }
+
+  .mainText {
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}

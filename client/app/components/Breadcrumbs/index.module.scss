@@ -1,0 +1,29 @@
+.breadcrumbs {
+  margin-top: var(--spacing-1);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 14px;
+  color: var(--lightGrey);
+  align-items: flex-end;
+  gap: 0.5rem;
+
+  .category {
+    &:last-child {
+      font-weight: 600;
+    }
+
+    &.disableLast {
+      pointer-events: none;
+
+      &:hover {
+        text-decoration: none;
+        cursor: default;
+      }
+    }
+
+    &:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  }
+}

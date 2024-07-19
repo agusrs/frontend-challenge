@@ -5,6 +5,12 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import styles from "./index.module.scss";
 
+/**
+ * Barra de búsqueda. Al buscar navega a /items con el valor del input como searchParam.
+ * El input toma como valor inicial el query string de los search params si es que existe
+ *
+ * @component
+ */
 const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();

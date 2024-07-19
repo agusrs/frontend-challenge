@@ -7,6 +7,13 @@ import CurrencyNumber from "../CurrencyNumber";
 import { Item } from "@/app/types/types";
 import noImage from "../../../public/noImage.svg";
 
+/**
+ * Componente que renderiza el elemento de la página de items.
+ * Muestra valores por defecto cuando al elemento le faltan propiedades.
+ *
+ * @component
+ * @param item
+ */
 const ItemCard = ({ item }: { item: Item }) => {
   return (
     <div className={styles.card}>

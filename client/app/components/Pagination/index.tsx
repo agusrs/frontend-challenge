@@ -31,13 +31,23 @@ const PaginationItem = ({ page, href, isSelected }: PaginationItemProps) => {
 export interface PaginationProps {
   totalPages: number;
 }
-
+/**
+ * Componente de paginación a través de la navegación
+ *
+ * @component
+ * @param totalPages - Total de páginas
+ */
 const Pagination = ({ totalPages }: PaginationProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
 
-  const createPageURL = (pageNumber: number | string) => {
+  /**
+   * Construye la url a la que navegar con el número de página como searchParam
+   *
+   * @param pageNumber - Número de página al que se quiere navegar
+   */
+  const createPageURL = (pageNumber: number) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", pageNumber.toString());
     return `${pathname}?${params.toString()}`;

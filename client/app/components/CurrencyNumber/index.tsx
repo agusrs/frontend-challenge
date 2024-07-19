@@ -6,7 +6,15 @@ export interface CurrencyNumberProps {
   maxDecimals?: number;
   showNoDecimals?: boolean;
 }
-
+/**
+ * Renderiza un número formateado con su moneda y sus decimales
+ *
+ * @component
+ * @param currency - Moneda. Ejemplo: US$
+ * @param number - Número a formatear
+ * @param maxDecimals - Máximo de decimales permitido
+ * @param showNoDecimals - Si es verdadero, se mostrarán ceros como decimales para números enteros
+ */
 const CurrencyNumber = ({
   currency,
   number,

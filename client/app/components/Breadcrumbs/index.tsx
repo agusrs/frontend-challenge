@@ -10,6 +10,13 @@ export interface BreadcrumbsProps {
   disableLast?: boolean;
 }
 
+/**
+ * Componente breadcrumbs para navegar entre categorias
+ *
+ * @component
+ * @param categories - Array de categorias
+ * @param disableLast - Deshabilitar navegación en la última categoria
+ */
 const Breadcrumbs = ({ categories, disableLast = true }: BreadcrumbsProps) => {
   return (
     <section className={styles.breadcrumbs}>

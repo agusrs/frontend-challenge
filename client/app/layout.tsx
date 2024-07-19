@@ -9,11 +9,8 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: {
-    template: "%s | Meli challenge",
-    default: "Meli challenge",
-  },
-  description: "Meli front-end challenge",
+  title: "Meli challenge",
+  description: "Meli front-end technical challenge",
 };
 
 export default function RootLayout({

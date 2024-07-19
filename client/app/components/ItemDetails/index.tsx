@@ -9,7 +9,13 @@ import noImage from "../../../public/noImage.svg";
 export interface ItemDetailsProps {
   item: ItemDetail;
 }
-
+/**
+ * Componente que renderiza el detalle de un item
+ * Muestra valores por defecto cuando al elemento le faltan propiedades.
+ *
+ * @component
+ * @param item
+ */
 const ItemDetails = ({ item }: ItemDetailsProps) => {
   return (
     <div className={styles.details}>

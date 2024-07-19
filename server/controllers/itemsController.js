@@ -1,11 +1,13 @@
 import axios from "axios";
 import { getCategories, getCurrency, getDescription, getLocation, getPicture } from "../utils/getAttributes.js";
 
-// @desc   Get items by query, category and/or page number
-// @route  GET /api/items
+/**
+ * Gets items by query, category and/or page number
+ * @route  GET /api/items
+*/
 export const getItems = async (req, res, next) => {
   try {
-    let url = new URL("https://api.mercadolibre.com/sites/MLA/search");
+    let url = new URL(`${process.env.MELI_URL}/sites/MLA/search`);
 
     if (req.query.q)
       url.searchParams.append("q", req.query.q)
@@ -53,13 +55,14 @@ export const getItems = async (req, res, next) => {
     return next(error?.response?.data);
   }
 };
-
-// @desc   Get item by id
-// @route  GET /api/items/:id
+/**
+ * Gets item by id
+ * @route  GET /api/items/:id
+*/
 export const getItemById = async (req, res, next) => {
   try {
     const meliResponse = await axios.get(
-      `https://api.mercadolibre.com/items/${req.params.id}`
+      `${process.env.MELI_URL}/items/${req.params.id}`
     );
 
     if (meliResponse.statusText !== "OK") {

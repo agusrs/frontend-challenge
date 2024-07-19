@@ -5,6 +5,11 @@ import NoItems from "../NotFound";
 import Pagination from "../Pagination";
 import styles from "./index.module.scss";
 
+/**
+ * Devuelve una lista de items dado un query string o el id de una categoria, y opcionalmente un número de página.
+ * Si se pasa un query string y una categoria se tomará solo el query string para la búsqueda
+ * @param searchParams
+ */
 export async function getItems(searchParams: {
   [key: string]: string | undefined;
 }): Promise<GetItemsResponse | undefined> {
@@ -15,7 +20,7 @@ export async function getItems(searchParams: {
 
     if (page > 250 || page < 1) return;
 
-    let url = new URL("http://localhost:8000/api/items");
+    let url = new URL(`${process.env.API_URL}/items`);
 
     if (!searchParams["search"]) {
       searchParams["category"] &&
@@ -39,7 +44,11 @@ export async function getItems(searchParams: {
     return;
   }
 }
-
+/**
+ * Componente que buscar y muestra la lista de items con sus categorias y su paginación. Muestra un mensaje cuando no se encuentran items
+ * @component
+ * @param searchParams
+ */
 export default async function Items({
   searchParams,
 }: {

@@ -6,7 +6,12 @@ import Link from "next/link";
 export interface NotFoundProps {
   message: string;
 }
-
+/**
+ * Card para mostrar un mensaje de error o 404
+ *
+ * @component
+ * @param message - Mensaje de error
+ */
 const NotFound = ({ message }: NotFoundProps) => {
   return (
     <div className={styles.noItems}>

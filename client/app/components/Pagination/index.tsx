@@ -10,17 +10,16 @@ import {
   faChevronRight,
 } from "@fortawesome/free-solid-svg-icons";
 
-const PaginationItem = ({
-  page,
-  href,
-  isSelected,
-}: {
+export interface PaginationItemProps {
   page: number;
   href: string;
   isSelected: boolean;
-}) => {
+}
+
+const PaginationItem = ({ page, href, isSelected }: PaginationItemProps) => {
   return (
     <Link
+      data-testid="page-item"
       className={`${styles.pageItem} ${isSelected ? styles.selected : ""}`}
       href={href}
     >
@@ -29,7 +28,11 @@ const PaginationItem = ({
   );
 };
 
-const Pagination = ({ totalPages }: { totalPages: number }) => {
+export interface PaginationProps {
+  totalPages: number;
+}
+
+const Pagination = ({ totalPages }: PaginationProps) => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
@@ -48,24 +51,26 @@ const Pagination = ({ totalPages }: { totalPages: number }) => {
         <Link
           className={`${styles.pageItem} ${styles.button}`}
           href={createPageURL(currentPage - 1)}
+          data-testid="left-arrow"
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </Link>
       )}
-      {allPages.map((page) => {
+      {allPages.map((page, index) => {
         return typeof page == "number" ? (
           <PaginationItem
-            key={page}
+            key={`${page} ${index}`}
             page={page}
             href={createPageURL(page)}
             isSelected={currentPage == page}
           />
         ) : (
-          page
+          <span key={`${page} ${index}`}>{page}</span>
         );
       })}
       {currentPage < totalPages && (
         <Link
+          data-testid="right-arrow"
           className={`${styles.pageItem} ${styles.button}`}
           href={createPageURL(currentPage + 1)}
         >

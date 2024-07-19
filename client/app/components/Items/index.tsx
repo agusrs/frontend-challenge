@@ -1,16 +1,19 @@
+import { GetItemsResponse } from "@/app/types/response";
 import Breadcrumbs from "../Breadcrumbs";
 import ItemCard from "../ItemCard";
 import NoItems from "../NotFound";
 import Pagination from "../Pagination";
 import styles from "./index.module.scss";
 
-async function getItems(searchParams: { [key: string]: string | undefined }) {
+export async function getItems(searchParams: {
+  [key: string]: string | undefined;
+}): Promise<GetItemsResponse | undefined> {
   try {
     const page = Number(searchParams["page"]) || 1;
 
-    if (Object.keys(searchParams).length == 0) return [];
+    if (Object.keys(searchParams).length == 0) return;
 
-    if (page > 250 || page < 1) return [];
+    if (page > 250 || page < 1) return;
 
     let url = new URL("http://localhost:8000/api/items");
 
@@ -26,12 +29,14 @@ async function getItems(searchParams: { [key: string]: string | undefined }) {
     const res = await fetch(url, { cache: "no-store" });
 
     if (!res.ok) {
-      throw new Error("Error al buscar productos");
+      console.error("Error al buscar productos");
+      return;
     }
 
     return res.json();
   } catch (error) {
-    return new Error("Error al buscar productos");
+    console.error("Error al buscar productos");
+    return;
   }
 }
 
@@ -40,27 +45,25 @@ export default async function Items({
 }: {
   searchParams: { [key: string]: string | undefined };
 }) {
-  const { items, categories, pagination } = await getItems(searchParams);
+  const response = await getItems(searchParams);
 
-  if (!items || items.length == 0)
+  if (!response || response.items.length == 0)
     return (
       <NoItems message="No se encontraron resultados relacionados a esa búsqueda" />
     );
 
   return (
     <>
-      {items.length > 0 && (
-        <Breadcrumbs
-          categories={categories}
-          disableLast={searchParams["category"] !== undefined}
-        />
-      )}
+      <Breadcrumbs
+        categories={response.categories}
+        disableLast={searchParams["category"] !== undefined}
+      />
       <section className={styles.container}>
-        {items.map((item: any) => (
+        {response.items.map((item) => (
           <ItemCard key={item.id} item={item} />
         ))}
       </section>
-      {items.length > 0 && <Pagination totalPages={pagination.total} />}
+      <Pagination totalPages={response.pagination.total} />
     </>
   );
 }

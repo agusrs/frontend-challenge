@@ -4,13 +4,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTruck } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import CurrencyNumber from "../CurrencyNumber";
+import { Item } from "@/app/types/types";
+import noImage from "../../../public/noImage.svg";
 
-const ItemCard = ({ item }: { item: any }) => {
+const ItemCard = ({ item }: { item: Item }) => {
   return (
     <div className={styles.card}>
-      <Link href={`/items/${item.id}`} className={styles.picture}>
+      <Link role="link" href={`/items/${item.id}`} className={styles.picture}>
         <Image
-          src={item.picture}
+          src={item.picture ?? noImage}
           alt={item.title}
           width={180}
           height={180}
@@ -18,11 +20,11 @@ const ItemCard = ({ item }: { item: any }) => {
         />
       </Link>
       <div className={styles.priceContainer}>
-        <Link href={`/items/${item.id}`} className={styles.price}>
+        <Link role="link" href={`/items/${item.id}`} className={styles.price}>
           <CurrencyNumber
-            currency={item.price.currency}
+            currency={item.price.currency ?? "$"}
             number={item.price.amount}
-            maxDecimals={item.price.decimals}
+            maxDecimals={item.price.decimals ?? 2}
           />
         </Link>
         {item.free_shipping && (
@@ -31,10 +33,12 @@ const ItemCard = ({ item }: { item: any }) => {
           </span>
         )}
       </div>
-      <Link href={`/items/${item.id}`} className={styles.title}>
+      <Link role="link" href={`/items/${item.id}`} className={styles.title}>
         <span title={item.title}>{item.title}</span>
       </Link>
-      <span className={styles.location}>{item.location}</span>
+      <span data-testid="location" className={styles.location}>
+        {item.location ?? ""}
+      </span>
     </div>
   );
 };

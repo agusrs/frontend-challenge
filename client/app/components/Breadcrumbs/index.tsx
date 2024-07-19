@@ -3,9 +3,10 @@ import styles from "./index.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { Category } from "@/app/types/types";
 
 export interface BreadcrumbsProps {
-  categories: { id: string; name: string }[];
+  categories: Category[];
   disableLast?: boolean;
 }
 

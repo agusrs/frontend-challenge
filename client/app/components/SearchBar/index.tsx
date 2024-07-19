@@ -25,7 +25,7 @@ const SearchBar = () => {
   };
 
   return (
-    <form onSubmit={onSearch} className={styles.form}>
+    <form data-testid="form" onSubmit={onSearch} className={styles.form}>
       <input
         ref={inputRef}
         value={search}

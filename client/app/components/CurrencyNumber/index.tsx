@@ -1,16 +1,18 @@
 import styles from "./index.module.scss";
 
+export interface CurrencyNumberProps {
+  currency: string;
+  number: number;
+  maxDecimals?: number;
+  showNoDecimals?: boolean;
+}
+
 const CurrencyNumber = ({
   currency,
   number,
   maxDecimals = 0,
   showNoDecimals = false,
-}: {
-  currency: string;
-  number: number;
-  maxDecimals?: number;
-  showNoDecimals?: boolean;
-}) => {
+}: CurrencyNumberProps) => {
   const [integerPart, decimalPart] = number.toFixed(maxDecimals).split(".");
 
   return (

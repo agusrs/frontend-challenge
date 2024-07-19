@@ -3,6 +3,7 @@ import logo from "../../../public/logo-meli.png";
 import SearchBar from "../SearchBar";
 import styles from "./index.module.scss";
 import Link from "next/link";
+import { Suspense } from "react";
 
 const Header = () => {
   return (
@@ -11,7 +12,9 @@ const Header = () => {
         <Link role="link" href="/">
           <Image priority alt="logo" src={logo} className={styles.logo} />
         </Link>
-        <SearchBar />
+        <Suspense>
+          <SearchBar />
+        </Suspense>
       </div>
     </header>
   );

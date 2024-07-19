@@ -1,8 +1,9 @@
 import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import DetailPage, { getItemDetail } from "./page";
+import DetailPage from "./page";
 import { GetItemDetailResponse } from "@/app/types/response";
 import { notFound } from "next/navigation";
+import { getItemDetail } from "@/app/utils/getItemDetail";
 
 jest.mock("next/navigation", () => ({
   notFound: jest.fn(),

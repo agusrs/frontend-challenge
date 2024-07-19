@@ -4,6 +4,9 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:server": "concurrently -p \"[{name}]\" -n \"CLIENT,SERVER\" -c \"bgGreen,bgBlue\" \"npm run dev\" \"npm run server\"",
+    "server": "cd ../server && npm run dev",
+    "client": "npm run dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -25,6 +28,7 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "concurrently": "^8.2.2",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
     "eslint-config-prettier": "^9.1.0",

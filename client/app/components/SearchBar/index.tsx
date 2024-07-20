@@ -36,6 +36,7 @@ const SearchBar = () => {
         ref={inputRef}
         value={search}
         type="text"
+        maxLength={120}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Nunca dejes de buscar"
         name="search"

@@ -3,7 +3,7 @@ Este repositorio contiene el código del frontend y del backend utilizados para 
 ## Descripción de la aplicación
 La aplicación es un buscador de productos de Mercado Libre Argentina.
 ### Home
-En la pantalla principal (Home), se muestra únicamente el encabezado (header) con el logo de Mercado Libre y un campo de búsqueda. Al hacer clic en el logo, se navega a la pantalla principal desde cualquier parte de la aplicación. El campo de búsqueda permite ingresar el nombre del producto (hasta 120 caracteres) y al hacer clic en el ícono de búsqueda, se navega a la pantalla de resultados. Este encabezado permanece visible en todas las pantallas de la aplicación.
+En la pantalla principal (Home), se muestra únicamente el encabezado (header) con el logo de Mercado Libre y un campo de búsqueda. Al hacer clic en el logo, se navega a la pantalla principal. El campo de búsqueda permite ingresar el nombre del producto (hasta 120 caracteres) y al hacer clic en el ícono de búsqueda, se navega a la pantalla de resultados. Este encabezado permanece visible en todas las pantallas de la aplicación.
 ### Pantalla de Resultados de la búsqueda
 En la pantalla, después de una breve carga, se muestra la lista de productos encontrados según los parámetros de búsqueda, que pueden incluir la consulta del buscador o una categoría y el número de página.
 

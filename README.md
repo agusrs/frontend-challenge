@@ -96,10 +96,10 @@ npm test
 ```
 Si desea ver el detalle de la cobertura, luego de ejecutar el comando, busque la carpeta coverage que se creo dentro de client y levante un servidor local que ejecute el archivo index.html dentro de la carpeta Icov-report.
 ## Notas
-- Se comentaron con el formato de JSDoc los principales métodos y los componentes que tiene algún tipo de lógica dentro de la aplicación
+- Se comentaron, con el formato de JSDoc, los principales métodos y los componentes que tienen algún tipo de lógica dentro de la aplicación
 - El listado de productos se obtiene desde el componente Items y no desde la página debido a un workaround con Suspense
 - Se utilizaron cuatro breakpoints para el responsive de la página:
   - width <= 530px para dispositivos mobile
   - width <= 760px para un caso específico dentro de la pantalla de detalle de un producto
   - width <= 930px para tablets
-  - width > 930px para dispositivos mayores
+  - width > 930px para dispositivos más grandes
